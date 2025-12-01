@@ -50,7 +50,7 @@ function getSelectedWord(text) {
 
     // 判断是否只包含字母、连字符或撇号
     if (/^[A-Za-z-']+$/.test(firstWord)) {
-        return firstWord;
+        return firstWord.toLowerCase();
     } else {
         return null;
     }
@@ -77,13 +77,13 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
             return;
         }
 
-        const result = await uploadWord(word, token);
+        const result = await uploadWord(safeWord, token);
 
         chrome.notifications.create({
             type: "basic",
             silent: true,
             iconUrl: "logo_128.png",
-            title: result ? `已添加：${word}` : `已存在：${word}`,
+            title: result ? `已添加：${safeWord}` : `已存在：${safeWord}`,
             isClickable: false,
             message: ""
         });
