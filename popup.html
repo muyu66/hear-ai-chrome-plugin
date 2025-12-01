@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>HearAI</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 16px;
+        width: 220px;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      /* 登录视图 */
+      #login-view h3 {
+        margin: 0 0 12px 0;
+        font-size: 16px;
+        text-align: center;
+      }
+
+      #qrcode {
+        width: 128px;
+        height: 128px;
+        margin: 0 auto 10px auto;
+      }
+
+      #qr-expired-overlay {
+        position: absolute;
+        width: 128px;
+        height: 128px;
+        top: 0;
+        left: 0;
+        background: rgba(255, 255, 255, 0.85);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #666;
+        font-size: 14px;
+        border-radius: 4px;
+        display: none;
+      }
+
+      .qr-wrapper {
+        position: relative;
+        width: 128px;
+        height: 128px;
+        margin: 0 auto 10px auto;
+      }
+
+      #status {
+        font-size: 12px;
+        text-align: center;
+        color: #666;
+        margin-bottom: 8px;
+      }
+
+      button {
+        padding: 6px 10px;
+        font-size: 13px;
+        cursor: pointer;
+        width: 100%;
+      }
+
+      /* 主视图 */
+      #main-view {
+        text-align: center;
+      }
+
+      #avatar {
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        background-color: #eee;
+        margin: 0 auto 10px auto;
+      }
+
+      #nickname {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 16px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- 主页面：头像、昵称、退出 -->
+    <div id="main-view" class="hidden">
+      <img id="avatar" src="" alt="avatar" />
+      <div id="nickname"></div>
+      <button id="logout-btn">退出登录</button>
+    </div>
+
+    <!-- 登录页面：二维码登录 -->
+    <div id="login-view" class="hidden">
+      <h3>用 HearAI 应用扫码登录</h3>
+      <div class="qr-wrapper">
+        <div id="qrcode"></div>
+        <div id="qr-expired-overlay">已过期</div>
+      </div>
+    </div>
+
+    <script src="qrcode.min.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>
