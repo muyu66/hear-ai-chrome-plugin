@@ -141,7 +141,7 @@ async function checkLoginOnce() {
     if (!deviceSessionId) return null;
 
     try {
-        const url = `${BACKEND_URL}/auth/device_session?deviceSessionId=${deviceSessionId}`;
+        const url = `${BACKEND_URL}/auth/device-session?deviceSessionId=${deviceSessionId}`;
         const res = await fetch(url);
 
         if (!res.ok) return null;

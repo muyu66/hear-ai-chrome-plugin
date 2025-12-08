@@ -17,7 +17,7 @@ async function getAccessToken() {
 
 // 上传单词
 async function uploadWord(word, token) {
-    const res = await fetch(`${BACKEND_URL}/word_books`, {
+    const res = await fetch(`${BACKEND_URL}/my/words`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -77,7 +77,7 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
             return;
         }
 
-        const result = await uploadWord(safeWord, token);
+        const { result } = await uploadWord(safeWord, token);
 
         chrome.notifications.create({
             type: "basic",
